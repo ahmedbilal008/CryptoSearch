@@ -1,6 +1,6 @@
 import { BrowserRouter,Route, Routes } from "react-router-dom"
-import Home from "./components/Home"
-import CryptoDetails from "./components/CryptoDetails"
+import Home from "./views/Home"
+import CryptoDetails from "./views/CryptoDetails"
 
 function App() {
   return (
