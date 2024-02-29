@@ -1,6 +1,12 @@
+import CoinChart from "../components/CoinChart"
+import CoinDetail from "../components/CoinDetail"
+
 const CryptoDetails = () => {
   return (
-    <div>CryptoDetails</div>
+    <div>
+      <CoinDetail/>
+      <CoinChart/>
+    </div>
   )
 }
 

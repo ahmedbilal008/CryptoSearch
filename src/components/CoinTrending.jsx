@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom"
 const CoinTrending = ({coin}) => {
   return (
-    <>
+    <Link to={`/coin/${coin.id}`}>
     <div>
       <div>
         <span>{coin.score+1}</span>
@@ -9,7 +10,7 @@ const CoinTrending = ({coin}) => {
         <small>({coin.symbol})</small>
       </div>
     </div>
-    </>
+    </Link>
   )
 }
 
