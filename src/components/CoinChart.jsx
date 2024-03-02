@@ -1,5 +1,6 @@
 import useAxios from "../hooks/useAxios"
 import { useParams } from "react-router-dom";
+import LoadingBar from "./LoadingBar";
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -9,20 +10,26 @@ import {
     Title,
     Tooltip,
     Legend,
-    Filler    
+    Filler
 } from 'chart.js';
 import { Line } from "react-chartjs-2";
-
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);
 
 const CoinChart = () => {
-    const {id}=useParams();
-    const {response}=useAxios(`coins/${id}/market_chart?vs_currency=usd&days=7`);
-  
-    if(!response) return <div>Loading...</div>
-    const chartData = response.prices.map(price => ({time: price[0], price: price[1]}));
-    const options ={
-        responsive:true
+    const { id } = useParams();
+    const { response } = useAxios(`coins/${id}/market_chart?vs_currency=usd&days=7`);
+
+    if (!response) {
+        return (
+            <div className="wrapper-container mt-10">
+                <LoadingBar className="h-8 w-32" />
+                <LoadingBar className="h-8 w-full mt-4" />
+            </div>
+        )
+    }
+    const chartData = response.prices.map(price => ({ time: price[0], price: price[1] }));
+    const options = {
+        responsive: true
     }
     const data = {
         labels: chartData.map(data => {
@@ -41,12 +48,12 @@ const CoinChart = () => {
             }
         ]
     }
-    
+
     return (
-    <div>
-        <Line options={options} data={data} />
-    </div>
-  )
+        <div>
+            <Line options={options} data={data} />
+        </div>
+    )
 }
 
 export default CoinChart
