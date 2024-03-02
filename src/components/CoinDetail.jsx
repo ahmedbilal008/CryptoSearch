@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import useAxios from "../hooks/useAxios";
 import LoadingBar from "./LoadingBar";
 import millify from "millify";
+
 const CoinDetail = () => {
     const { id } = useParams();
     const { response } = useAxios(`coins/${id}?localization=false&tickers=false&community_data=false`);
@@ -50,7 +51,7 @@ const CoinDetail = () => {
 
     const highPrice = response.market_data.high_24h.usd;
     console.log("high Price:", highPrice);
-    
+
     const marketcap = response.market_data.market_cap.usd;
     console.log("USD market :", millify(marketcap));
 
