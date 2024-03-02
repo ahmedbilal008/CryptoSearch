@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { RxHamburgerMenu } from "react-icons/rx";
 
 const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -25,14 +26,18 @@ const Navbar = () => {
   }, [searchQuery]);
 
   return (
-    <div>
-      <input type="text" value={searchQuery} onChange={handleInputChange} />
-      <div>Navbar</div>
-      {response && (
-        <div>
-          {JSON.stringify(response)}
-        </div>
-      )}
+    <div className='h-16 bg-slate-700 flex justify-start items-center'>
+      <div>
+        <RxHamburgerMenu style={{ fontSize: '3rem', color: 'orange' }} />
+      </div>
+      <div className='pl-10 w-2/3 flex justify-center'>
+        <input className="p-2 px-4 w-full mx-auto border-2 rounded-xl border-black opacity-50 text-black" type="text" value={searchQuery} onChange={handleInputChange} placeholder='Enter the name of coin...' />
+        {/* {response && (
+          <div>
+            {JSON.stringify(response.coins)}
+          </div>
+        )} */}
+      </div>
     </div>
   );
 };
