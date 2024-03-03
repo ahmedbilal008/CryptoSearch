@@ -17,8 +17,7 @@ const Home = () => {
   return (
     <div className={`${darkMode && "dark"}`}>
       <div className="min-h-screen light-mode-gradient dark:dark-mode-gradient">
-      <Navbar/>
-        <div className="flex justify-center space-x-5 p-20">
+        <div className="flex justify-center space-x-5 p-20 pb-5">
           <FaBitcoin className="animate-bounce animation-delay-1 animate-duration-4s" style={{ fontSize: '8rem', color: 'orange' }} />
           <FaEthereum className="animate-bounce animation-delay-3 animate-duration-4s" style={{ fontSize: '8rem', color: 'gray' }} />
           <div className="font-bold font-sans text-4xl text-black dark:text-orange-500">
@@ -28,8 +27,7 @@ const Home = () => {
           <SiTether className="animate-bounce animation-delay-2 animate-duration-4s" style={{ fontSize: '8rem', color: 'gray' }} />
           <SiDogecoin className="animate-bounce animation-delay-4 animate-duration-4s" style={{ fontSize: '8rem', color: 'orange' }} />
         </div>
-       
-        <GlobalStats />
+        <GlobalStats darkMode={darkMode}/>
         <Trending />
         <Markets />
         <Exchanges />

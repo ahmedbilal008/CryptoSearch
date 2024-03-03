@@ -1,36 +1,51 @@
-import useAxios from "../hooks/useAxios";
-import LoadingBar from "./LoadingBar";
-const GlobalStats = () => {
-    const { response } = useAxios('global');
-    console.log(response);
+import React from 'react';
+import useAxios from '../hooks/useAxios';
+import StatsCard from './StatsCard';
+import LoadingBar from './LoadingBar';
+import millify from 'millify';
 
-    if (!response) {
-        return (
-            <div className="wrapper-container mt-10">
-                <LoadingBar className="h-8 w-32" />
-                <LoadingBar className="h-8 w-full mt-4" />
-                <LoadingBar className="h-8 w-48 mt-4" />
-                <LoadingBar className="h-8 w-full mt-4" />
-                <LoadingBar className="h-8 w-full mt-4" />
-            </div>
-        );
-    }
-    const act_crypto = response.data.active_cryptocurrencies;
-    console.log("active currencies:", act_crypto);
+const GlobalStats = ({ darkMode }) => {
+  const { response } = useAxios('global');
+  console.log(response);
 
-    const ongoing_ico = response.data.ongoing_icos;
-    console.log("ongoing ico:", ongoing_ico);
-    
-    const ended_ico = response.data.ended_icos;
-    console.log("ended ico:", ended_ico);
-    
-    const total_market_cap = response.data.total_market_cap.usd;
-    console.log("total market cap:", total_market_cap);
+  if (!response) {
+    return (
+      <div className="wrapper-container mt-10">
+        <LoadingBar className="h-8 w-32" />
+        <LoadingBar className="h-8 w-full mt-4" />
+        <LoadingBar className="h-8 w-48 mt-4" />
+        <LoadingBar className="h-8 w-full mt-4" />
+        <LoadingBar className="h-8 w-full mt-4" />
+      </div>
+    );
+  }
 
-    const markets = response.data.markets;
-    console.log("markets:", markets);
+  const { active_cryptocurrencies, ongoing_icos, ended_icos, total_market_cap, markets } = response.data;
+  console.log('active currencies:', active_cryptocurrencies);
+  console.log('ongoing ico:', ongoing_icos);
+  console.log('ended ico:', ended_icos);
+  console.log('total market cap:', total_market_cap);
+  console.log('markets:', markets);
+
   return (
-    <div>GlobalStats</div>
-  )
-}
-export default GlobalStats
+    <div className={`wrapper-container mt-10 ${darkMode ? "dark" : ""}`}>
+      <div className="flex justify-between">
+        <div>
+          <h1 className="text-2xl font-bold">Global Stats</h1>
+          <p className="text-sm text-gray-500">Cryptocurrency stats</p>
+        </div>
+      </div>
+      <div className="mt-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <StatsCard title="Active Cryptocurrencies" value={active_cryptocurrencies} darkMode={darkMode} />
+          <StatsCard title="Ongoing ICOs" value={ongoing_icos} darkMode={darkMode} />
+          <StatsCard title="Ended ICOs" value={ended_icos} darkMode={darkMode} />
+          <StatsCard title="Markets" value={markets} darkMode={darkMode} />
+          <StatsCard title="Total Market Cap" value={millify(total_market_cap.usd)} darkMode={darkMode} />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default GlobalStats;

@@ -27,8 +27,8 @@ const Navbar = () => {
 
   return (
     <div className='h-16 bg-slate-700 flex justify-start items-center'>
-      <div>
-        <RxHamburgerMenu style={{ fontSize: '3rem', color: 'orange' }} />
+      <div className='ml-5 hover:scale-105'>
+        <RxHamburgerMenu style={{ fontSize: '3rem', color: 'orange'}} />
       </div>
       <div className='pl-10 w-2/3 flex justify-center'>
         <input className="p-2 px-4 w-full mx-auto border-2 rounded-xl border-black opacity-50 text-black" type="text" value={searchQuery} onChange={handleInputChange} placeholder='Enter the name of coin...' />
