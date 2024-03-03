@@ -30,10 +30,7 @@ const GlobalStats = ({ darkMode }) => {
   return (
     <div className={`wrapper-container mt-10 ${darkMode ? "dark" : ""}`}>
       <div className="flex justify-between">
-        <div>
-          <h1 className="text-2xl font-bold">Global Stats</h1>
-          <p className="text-sm text-gray-500">Cryptocurrency stats</p>
-        </div>
+          <h1 className="text-2xl text-gray-400 font-bold">Global Statistics</h1>
       </div>
       <div className="mt-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
