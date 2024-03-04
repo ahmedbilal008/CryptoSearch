@@ -20,8 +20,8 @@ const Trending = ({ darkMode }) => {
       <div className='text-2xl text-gray-400 font-bold'>
         Trending cryptocurrencies
       </div>
-    <div className='w-full inline-flex flex-nowrap mt-5'>
-      <ul className='flex items-center justify-center md:justify-start [&_li]:mx-8 animate-infinite-scroll'>
+    <div className='w-full inline-flex flex-nowrap mt-5 overflow-hidden'>
+      <ul className='flex items-center justify-center md:justify-start [&_li]:mx-5 animate-infinite-scroll'>
         {response && response.coins.map(coin => <li><CoinTrending key={coin.item.coin_id} coin={coin.item} darkMode={darkMode} /></li>)}
       </ul>
     </div>

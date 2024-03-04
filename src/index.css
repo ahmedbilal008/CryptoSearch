@@ -46,9 +46,5 @@
     .light-mode-gradient-crypto-2 {
         background-image: linear-gradient(to bottom, #fbbf24, #d97706);
     }
-
-    .menu-transition {
-        transform: translate(10px, -20px),
-    }
 }
 

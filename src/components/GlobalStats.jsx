@@ -28,13 +28,13 @@ const GlobalStats = ({ darkMode }) => {
   console.log('markets:', markets);
 
   return (
-    <div className={`wrapper-container mt-10 ${darkMode ? "dark" : ""}`}>
+    <div className={`wrapper-container w-1/2 mt-10 m-5 ${darkMode ? "dark" : ""}`}>
       <div className="flex justify-between">
           <h1 className="text-2xl text-gray-400 font-bold">Global Statistics</h1>
       </div>
       <div className="mt-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-          <StatsCard title="Active Cryptocurrencies" value={active_cryptocurrencies} darkMode={darkMode} />
+        <div className="grid grid-cols-1 gap-4">
+          <StatsCard title="Active Currencies" value={active_cryptocurrencies} darkMode={darkMode} />
           <StatsCard title="Ongoing ICOs" value={ongoing_icos} darkMode={darkMode} />
           <StatsCard title="Ended ICOs" value={ended_icos} darkMode={darkMode} />
           <StatsCard title="Markets" value={markets} darkMode={darkMode} />

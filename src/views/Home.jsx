@@ -27,9 +27,11 @@ const Home = () => {
           <SiTether className="animate-bounce animation-delay-2 animate-duration-4s" style={{ fontSize: '8rem', color: 'gray' }} />
           <SiDogecoin className="animate-bounce animation-delay-4 animate-duration-4s" style={{ fontSize: '8rem', color: 'orange' }} />
         </div>
-        <GlobalStats darkMode={darkMode}/>
-        <Trending darkMode={darkMode}/>
-        <Markets />
+        <Trending darkMode={darkMode} />
+        <div className="flex lg:flex-row flex-col">
+          <Markets darkMode={darkMode} />
+          <GlobalStats darkMode={darkMode} />
+        </div>
         <Exchanges />
         <div className='fixed top-[12px] right-4 group'>
           <div className=' bg-slate-800 dark:bg-gradient-to-r from-rose-400 via-orange-500 to-yellow-500 rounded-lg blur absolute -inset-1 opacity-75 group-hover:opacity-100 group-hover:duration-500'></div>
@@ -37,7 +39,7 @@ const Home = () => {
             className='relative px-5 py-2 rounded-lg leading-none dark:bg-black bg-slate-400'
             onClick={toggleDarkMode}
           >
-            {darkMode ? <IoMdSunny style={{ fontSize: '1.5rem',color: 'orange'}}/> : <IoMoon style={{ fontSize: '1.5rem'}}/>}
+            {darkMode ? <IoMdSunny style={{ fontSize: '1.5rem', color: 'orange' }} /> : <IoMoon style={{ fontSize: '1.5rem' }} />}
           </button>
         </div>
       </div>
