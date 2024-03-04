@@ -1,13 +1,12 @@
 import useAxios from "../hooks/useAxios";
-
+import { Link } from "react-router-dom";
 const Exchanges = () => {
   const { response } = useAxios('exchanges?per_page=10');
-  console.log(response);
-
   return (
     <div>
       <h1>Exchanges</h1>
       {response && response.map((exchange) => (
+         <Link to={`/exchange/${exchange.id}`}>
         <div key={exchange.id}>
           <h2>{exchange.name}</h2>
           <p>Year Established: {exchange.year_established}</p>
@@ -20,6 +19,7 @@ const Exchanges = () => {
           <img src={exchange.image} alt={exchange.name} style={{ maxWidth: '100px' }} />
           <hr />
         </div>
+        </Link>
       ))}
     </div>
   );

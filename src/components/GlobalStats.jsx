@@ -28,7 +28,7 @@ const GlobalStats = ({ darkMode }) => {
   console.log('markets:', markets);
 
   return (
-    <div className={`wrapper-container w-1/2 mt-10 m-5 ${darkMode ? "dark" : ""}`}>
+    <div className={`wrapper-container lg:w-1/2 w-auto mt-10 m-5 ${darkMode ? "dark" : ""}`}>
       <div className="flex justify-between">
           <h1 className="text-2xl text-gray-400 font-bold">Global Statistics</h1>
       </div>
