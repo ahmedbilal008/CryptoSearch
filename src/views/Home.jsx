@@ -32,7 +32,7 @@ const Home = () => {
           <Markets darkMode={darkMode} />
           <GlobalStats darkMode={darkMode} />
         </div>
-        <Exchanges />
+        <Exchanges darkMode={darkMode}/>
         <div className='fixed top-[12px] right-4 group'>
           <div className=' bg-slate-800 dark:bg-gradient-to-r from-rose-400 via-orange-500 to-yellow-500 rounded-lg blur absolute -inset-1 opacity-75 group-hover:opacity-100 group-hover:duration-500'></div>
           <button

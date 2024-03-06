@@ -28,11 +28,11 @@
     }
 
     .dark-mode-gradient {
-        background-image: linear-gradient(to right, #475569, #020617);
+        background-image: linear-gradient(to right, #1e293b, #020617);
     }
 
     .dark-mode-gradient-crypto-1 {
-        background-image: linear-gradient(to bottom, #64748b, #334155);
+        background-image: linear-gradient(to left, #4b5563, #9ca3af);
     }
 
     .dark-mode-gradient-crypto-2 {

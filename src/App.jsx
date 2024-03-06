@@ -3,7 +3,7 @@ import Home from "./views/Home"
 import CryptoDetails from "./views/CryptoDetails"
 import ExchangeDetails from "./views/ExchangeDetails"
 import Navbar from "./components/Navbar"
-
+import Footer from "./components/Footer"
 function App() {
   return (
     <BrowserRouter>
@@ -13,6 +13,7 @@ function App() {
         <Route path="/coin/:id" element={<CryptoDetails/>}/>
         <Route path="/exchange/:id" element={<ExchangeDetails/>}/>
       </Routes>
+      <Footer/>
     </BrowserRouter>
   )
 }
