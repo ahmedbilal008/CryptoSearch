@@ -1,11 +1,13 @@
 import CoinChart from "../components/CoinChart"
 import CoinDetail from "../components/CoinDetail"
 
-const CryptoDetails = () => {
+const CryptoDetails = ({darkMode}) => {
   return (
-    <div>
-      <CoinDetail/>
-      <CoinChart/>
+    <div className={`${darkMode && "dark"}`}>
+    <div className="min-h-screen light-mode-gradient dark:dark-mode-gradient">
+      <CoinDetail darkMode={darkMode}/>
+      <CoinChart darkMode={darkMode}/>
+    </div>
     </div>
   )
 }

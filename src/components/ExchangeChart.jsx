@@ -15,7 +15,7 @@ import {
 import { Line } from "react-chartjs-2";
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler);
 
-const ExchangeChart = () => {
+const ExchangeChart = ({darkMode}) => {
     const { id } = useParams();
     const { response } = useAxios(`exchanges/${id}/volume_chart?days=7`);
 
@@ -41,17 +41,22 @@ const ExchangeChart = () => {
         datasets: [
             {
                 fill: true,
-                label: 'Price',
+                label: 'Price In BTC',
                 data: chartData.map(data => data.price),
-                backgroundColor: 'rgba(75,192,192,0.2)',
-                borderColor: 'rgba(75,192,192,1)',
+                backgroundColor: 'rgba(251,146,60,0.3)',
+                borderColor: 'rgba(251,146,60,1)',
             }
         ]
     }
 
     return (
         <div>
+            <div>
+                <h1 className="text-black dark:text-gray-400 text-2xl font-bold m-4 lg:m-8">Price Chart</h1>
+            </div>
+            <div className="p-4 md:p-10">
             <Line options={options} data={data} />
+            </div>
         </div>
     )
 }

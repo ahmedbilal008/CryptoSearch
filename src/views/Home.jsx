@@ -1,19 +1,12 @@
-import { useState } from "react";
 import Exchanges from "../components/Exchanges";
 import GlobalStats from "../components/GlobalStats";
 import Markets from "../components/Markets";
-import Navbar from "../components/Navbar";
 import Trending from "../components/Trending";
 import { FaBitcoin, FaEthereum } from "react-icons/fa";
 import { SiTether, SiDogecoin } from "react-icons/si";
-import { IoMoon } from "react-icons/io5";
-import { IoMdSunny } from "react-icons/io";
 
-const Home = () => {
-  const [darkMode, setDarkMode] = useState(false);
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
+
+const Home = ({darkMode}) => {
   return (
     <div className={`${darkMode && "dark"}`}>
       <div className="min-h-screen light-mode-gradient dark:dark-mode-gradient">
@@ -33,15 +26,6 @@ const Home = () => {
           <GlobalStats darkMode={darkMode} />
         </div>
         <Exchanges darkMode={darkMode}/>
-        <div className='fixed top-[12px] right-4 group'>
-          <div className=' bg-slate-800 dark:bg-gradient-to-r from-rose-400 via-orange-500 to-yellow-500 rounded-lg blur absolute -inset-1 opacity-75 group-hover:opacity-100 group-hover:duration-500'></div>
-          <button
-            className='relative px-5 py-2 rounded-lg leading-none dark:bg-black bg-slate-400'
-            onClick={toggleDarkMode}
-          >
-            {darkMode ? <IoMdSunny style={{ fontSize: '1.5rem', color: 'orange' }} /> : <IoMoon style={{ fontSize: '1.5rem' }} />}
-          </button>
-        </div>
       </div>
     </div>
   )
