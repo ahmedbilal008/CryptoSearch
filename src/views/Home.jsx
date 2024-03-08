@@ -11,14 +11,14 @@ const Home = ({darkMode}) => {
     <div className={`${darkMode && "dark"}`}>
       <div className="min-h-screen light-mode-gradient dark:dark-mode-gradient">
         <div className="flex justify-center space-x-5 p-20 pb-5">
-          <FaBitcoin className="animate-bounce animation-delay-1 animate-duration-4s" style={{ fontSize: '8rem', color: 'orange' }} />
-          <FaEthereum className="animate-bounce animation-delay-3 animate-duration-4s" style={{ fontSize: '8rem', color: 'gray' }} />
+          <FaBitcoin className="animate-bounce animation-delay-1 animate-duration-4s" style={{ fontSize: '8rem', color: 'orange',minWidth: '40px'  }} />
+          <FaEthereum className="animate-bounce animation-delay-3 animate-duration-4s" style={{ fontSize: '8rem', color: 'gray',minWidth: '40px' }} />
           <div className="font-bold font-sans text-4xl text-black dark:text-orange-500">
             Crypto
             <div className=" font-bold font-sans text-4xl text-orange-600 dark:text-slate-600">Search</div>
           </div>
-          <SiTether className="animate-bounce animation-delay-2 animate-duration-4s" style={{ fontSize: '8rem', color: 'gray' }} />
-          <SiDogecoin className="animate-bounce animation-delay-4 animate-duration-4s" style={{ fontSize: '8rem', color: 'orange' }} />
+          <SiTether className="animate-bounce animation-delay-2 animate-duration-4s" style={{ fontSize: '8rem', color: 'gray',minWidth: '40px' }} />
+          <SiDogecoin className="animate-bounce animation-delay-4 animate-duration-4s" style={{ fontSize: '8rem', color: 'orange',minWidth: '40px' }} />
         </div>
         <Trending darkMode={darkMode} />
         <div className="flex lg:flex-row flex-col">

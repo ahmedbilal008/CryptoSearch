@@ -37,10 +37,12 @@ const CoinDetail = ({ darkMode }) => {
         <div className={`${darkMode && "dark"}`}>
             <div className="p-5">
                 <div className="flex mb-4">
-                    <img src={response.image.small} alt={response.name} className="w-10 rounded-3xl mr-4" />
-                    <h1 className="text-black dark:text-gray-400 text-2xl font-bold mr-2">{response.name}</h1>
-                    <p className="text-black dark:text-gray-400 mr-6">({response.symbol})</p>
-                    <p className="text-black dark:text-gray-400">Genesis Date: {genesisDate}</p>
+                    <img src={response.image.small} alt={response.name} className="w-10 min-w-[70px] rounded-3xl mr-4" />
+                    <div className="flex sm:flex-row flex-col">
+                        <h1 className="text-black dark:text-gray-400 text-2xl font-bold mr-2">{response.name}</h1>
+                        <p className="text-black dark:text-gray-400 mr-6">({response.symbol})</p>
+                        <p className="text-black dark:text-gray-400">Genesis Date: {genesisDate}</p>
+                    </div>
                 </div>
 
                 <div className="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 sm:ml-5 md:ml-10 lg:ml-20 sm:text-lg lg:text-lg gap-2">
