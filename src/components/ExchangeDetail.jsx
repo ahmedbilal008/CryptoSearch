@@ -2,7 +2,7 @@ import useAxios from "../hooks/useAxios";
 import { useParams } from "react-router-dom";
 
 const ExchangeDetail = ({darkMode}) => {
-  const { response } = useAxios('exchanges?per_page=10');
+  const { response } = useAxios('exchanges?per_page=100');
   const { id } = useParams();
   const selectedExchange = response && response.find(exchange => exchange.id === id);
 

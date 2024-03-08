@@ -44,11 +44,11 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
     <div className={`${darkMode && "dark"}`}>
       <div className='h-16 bg-slate-700 flex justify-start items-center'>
 
-        <ul className='hidden md:flex'>
+        <ul className='ml-5 hidden md:flex'>
           {items.map(item => (
             <li
               key={item.id}
-              className='p-4 hover:bg-[#00df9a] rounded-xl m-2 cursor-pointer duration-300 hover:text-black'
+              className='p-3 hover:bg-orange-400 rounded-xl m-2 cursor-pointer duration-300 text-black text-lg font-semibold hover:text-xl'
             >
                <Link to={item.link} onClick={handleNav}>
               {item.name}
@@ -79,7 +79,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
           ))}
         </ul>
 
-        <div className='pl-10 w-2/3 flex justify-center'>
+        <div className='pl-10 w-3/5 flex justify-center'>
           <input
             className="p-2 px-4 w-full mx-auto border-2 rounded-xl border-black opacity-50 text-black"
             type="text"
