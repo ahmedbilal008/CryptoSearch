@@ -18,12 +18,12 @@ const Exchanges = () => {
                 className="w-10 rounded-3xl mr-2"
               />
               <div>
-                <p className="font-semibold">{exchange.name}</p>
+                <p className="font-semibold text-black dark:text-gray-400">{exchange.name}</p>
               </div>
             </div>
-            <span className="font-semibold text-gray-500">{millify(exchange.trade_volume_24h_btc)}</span>
+            <span className="font-semibold text-black dark:text-gray-400">{millify(exchange.trade_volume_24h_btc)}</span>
             <div className="flex">
-              <span className="font-semibold">{exchange.trust_score_rank}</span>
+              <span className="font-semibold text-black dark:text-gray-400">{exchange.trust_score_rank}</span>
             </div>
             <div className="hidden lg:block text-white">
               <p>{exchange.country}</p>
