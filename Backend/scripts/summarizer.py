@@ -1,8 +1,8 @@
 import nltk 
 from newspaper import Article
 
-nltk.download('punkt')
-
+#nltk.download('punkt_tab')
+#nltk.download('punkt')
 def summarize_article(url):
     article = Article(url)
     article.download()
