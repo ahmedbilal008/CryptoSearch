@@ -9,15 +9,9 @@ import CoinContainer from './CoinContainer';
 const Navbar = ({ darkMode, toggleDarkMode }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [response, setResponse] = useState(null);
+  const [dropdown, setDropdown] = useState(false);
   const [nav, setNav] = useState(false);
   const resultRef = useRef(null);
-
-  const handleInputChange = (event) => {
-    setSearchQuery(event.target.value);
-  };
-  const handleNav = () => {
-    setNav(!nav);
-  };
 
   const items = [
     { id: 1, name: 'Home', link: '/' },
@@ -26,11 +20,16 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
     { id: 4, name: 'News', link: '/news' },
   ];
 
+  const handleInputChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+  const handleNav = () => {
+    setNav(!nav);
+  };
+
   const handleOutsideClick = (event) => {
-    if (!resultRef.current.contains(event.target) && event.target.value.trim() === '' && !nav) {
-      setNav(true); 
-    } else if (!resultRef.current.contains(event.target) && event.target.value.trim() === '') {
-      setNav(false);
+    if (resultRef.current && !resultRef.current.contains(event.target)) {
+      setDropdown(false);
     }
   };
 
@@ -48,7 +47,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
         try {
           const result = await axios.get(`search?query=${searchQuery}`);
           setResponse(result.data);
-          setNav(true);
+          setDropdown(true);
           console.log('result', result.data.coins);
         } catch (error) {
           console.error('Error fetching data:', error);
@@ -91,13 +90,12 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
               key={item.id}
               className='p-2 pl-10 border-b rounded-tr-xl rounded-br-xl bg-gray-500 hover:bg-orange-400 duration-300 text-md md:text-lg font-semibold text-black cursor-pointer border-gray-600'
             >
-              <Link to={item.link} onClick={handleNav}>
+              <Link to={item.link}>
                 {item.name}
               </Link>
             </li>
           ))}
         </ul>
-
         <div ref={resultRef} className='pl-10 w-3/5 flex justify-center'>
           <input
             className="p-2 px-4 w-full mx-auto border-2 rounded-xl border-black opacity-50 text-black"
@@ -106,17 +104,15 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
             onChange={handleInputChange}
             placeholder='Enter the name of coin...'
           />
-          <div className={`bg-gray-700 border-2 border-black rounded-bl-3xl rounded-br-3xl z-30 w-3/5 fixed top-[64px] ${!nav ? 'hidden' : ''}`}>
-            {response && (
-              <div className='flex flex-wrap flex-col justify-around m-2'>
-                {response.coins.slice(0, 5).map((coin, index) => (
-                  <CoinContainer key={index} coin={coin} />
-                ))}
-              </div>
-            )}
+          {dropdown && (<div className={`bg-gray-700 border-2 border-black rounded-bl-3xl rounded-br-3xl z-30 w-3/5 fixed top-[64px] ${!nav ? 'hidden' : ''}`}>
+            <div className='flex flex-wrap flex-col justify-around m-2'>
+              {response.coins.slice(0, 5).map((coin, index) => (
+                <CoinContainer key={index} coin={coin} />
+              ))}
+            </div>
           </div>
+          )}
         </div>
-
         <div className='fixed top-[12px] right-4 group'>
           <div className=' bg-slate-800 dark:bg-gradient-to-r from-orange-600 to-yellow-600 rounded-lg blur absolute -inset-1 opacity-75 group-hover:opacity-100 group-hover:duration-500'></div>
           <button
