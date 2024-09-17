@@ -46,8 +46,8 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
       if (searchQuery) {
         try {
           const result = await axios.get(`search?query=${searchQuery}`);
-          setResponse(result.data);
           setDropdown(true);
+          setResponse(result.data);
           console.log('result', result.data.coins);
         } catch (error) {
           console.error('Error fetching data:', error);
