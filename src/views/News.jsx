@@ -6,6 +6,7 @@ const News = ({ darkMode }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [summaries, setSummaries] = useState({}); // Store summaries for each article
+  const [currentSummary, setCurrentSummary] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,11 +37,16 @@ const News = ({ darkMode }) => {
       const response = await axios.post('http://localhost:5000/summarize', { url });
       setSummaries(prevSummaries => ({
         ...prevSummaries,
-        [url]: response.data // Store summary for the specific article URL
+        [url]: response.data
       }));
+      setCurrentSummary(response.data);
     } catch (error) {
       console.error('Error fetching summary:', error);
     }
+  };
+
+  const closeSummary = () => {
+    setCurrentSummary(null);
   };
 
   if (loading) {
@@ -74,15 +80,23 @@ const News = ({ darkMode }) => {
               </a>
               <button
                 onClick={() => handleSummarize(article.url)}
-                className="mt-2 px-4 py-2 bg-blue-500 text-white rounded"
+                className="mt-2 px-4 py-2 ml-5 bg-blue-500 text-white rounded"
               >
                 Get Summary
               </button>
-              {/* Display the summary if it exists for this article */}
-              {summaries[article.url] && (
-                <div className="mt-2">
-                  <h4 className="font-bold">Summary:</h4>
-                  <p>{summaries[article.url].summary}</p>
+
+              {currentSummary && (
+                <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-10">
+                  <div className="bg-gray-400 p-5 m-7 rounded-lg shadow-lg max-w-lg">
+                    <h3 className="text-xl font-bold">{currentSummary.title}</h3>
+                    <p className="mt-2">{currentSummary.summary}</p>
+                    <button
+                      onClick={closeSummary}
+                      className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+                    >
+                      Close
+                    </button>
+                  </div>
                 </div>
               )}
             </div>
